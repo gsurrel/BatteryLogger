@@ -1,0 +1,24 @@
+Categories:System
+License:PublicDomain
+Web Site:https://github.com/gsurrel/BatteryLogger
+Source Code:https://github.com/gsurrel/BatteryLogger
+Issue Tracker:https://github.com/gsurrel/BatteryLogger/issues
+
+Auto Name:BatteryLogger
+Summary:Logs battery temperature
+Description:
+Logs battery '''temperature''', so it will not be accurate room temperature,
+especially if the phone is being used or in charge. There is ''no voltage
+logging''.
+.
+
+Repo Type:git
+Repo:https://github.com/gsurrel/BatteryLogger.git
+
+Build:1.0,1
+    commit=v1.0
+
+Auto Update Mode:None
+Update Check Mode:Tags
+Current Version:0.1.4
+Current Version Code:5
