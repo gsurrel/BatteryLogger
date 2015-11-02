@@ -212,6 +212,14 @@ public class BatteryFragment extends Fragment {
                 editor.apply();
                 updateLogData();
                 return true;
+            case R.id.menu_about:
+                new AlertDialog.Builder(getActivity())
+                        .setTitle(R.string.menu_about)
+                        .setMessage(R.string.about_message)
+                        .setNeutralButton(R.string.close, null)
+                        .create()
+                        .show();
+                return true;
             default:
                 return false;
         }

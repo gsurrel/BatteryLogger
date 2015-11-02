@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">BatteryLogger</string>
+	<string name="app_name">BatteryLogger</string>
 
-  <string name="menu_unit">Measurement unit</string>
+	<string name="menu_unit">Measurement unit</string>
 
-  <string name="menu_filter">Ignore noisy values</string>
+	<string name="menu_filter">Ignore noisy values</string>
+	<string name="menu_about">About</string>
+
+	<string name="about_message">This app is based on AtmosphereLogger.
+		You can find it on F-Droid and on the Play Store.</string>
+	<string name="close">Close</string>
 </resources>
