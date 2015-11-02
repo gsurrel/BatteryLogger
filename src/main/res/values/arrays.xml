@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- measurement unit -->
+  <string-array name="unit_entries">
+    <item>Celsius (°C)</item>
+    <item>Kelvin (K)</item>
+    <item>Fahrenheit (°F)</item>
+  </string-array>
+</resources>

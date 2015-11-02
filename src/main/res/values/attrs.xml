@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="PlotView">
+    <attr name="primaryColor" format="color" />
+    <attr name="secondaryColor" format="color" />
+    <attr name="borderColor" format="color" />
+    <attr name="mainTicsColor" format="color" />
+    <attr name="subTicsColor" format="color" />
+    <attr name="mainTicsStep">
+      <enum name="hour" value="0" />
+      <enum name="day" value="1" />
+      <enum name="week" value="2" />
+      <enum name="month" value="3" />
+    </attr>
+    <attr name="subTicsStep">
+      <enum name="hour" value="0" />
+      <enum name="day" value="1" />
+      <enum name="week" value="2" />
+      <enum name="month" value="3" />
+    </attr>
+  </declare-styleable>
+
+  <attr name="textSize" format="dimension" />
+  <attr name="textColor" format="color" />
+  <attr name="ticsStep" format="integer">
+    <enum name="hour" value="0" />
+    <enum name="day" value="1" />
+    <enum name="week" value="2" />
+    <enum name="month" value="3" />
+    <enum name="qday" value="4" />
+    <enum name="hday" value="5" />
+    <enum name="five_days" value="6" />
+    <enum name="ten_days" value="7" />
+  </attr>
+
+  <declare-styleable name="HorizontalTicsView">
+    <attr name="textSize" />
+    <attr name="textColor" />
+    <attr name="ticsStep" />
+  </declare-styleable>
+
+  <declare-styleable name="VerticalTicsView">
+    <attr name="textSize" />
+    <attr name="textColor" />
+  </declare-styleable>
+
+  <attr name="ticsStepPrimary1" format="integer">
+    <enum name="hour" value="0" />
+    <enum name="day" value="1" />
+    <enum name="week" value="2" />
+    <enum name="month" value="3" />
+    <enum name="qday" value="4" />
+    <enum name="hday" value="5" />
+    <enum name="five_days" value="6" />
+    <enum name="ten_days" value="7" />
+  </attr>
+  <attr name="ticsStepPrimary2" format="integer">
+    <enum name="hour" value="0" />
+    <enum name="day" value="1" />
+    <enum name="week" value="2" />
+    <enum name="month" value="3" />
+    <enum name="qday" value="4" />
+    <enum name="hday" value="5" />
+    <enum name="five_days" value="6" />
+    <enum name="ten_days" value="7" />
+  </attr>
+  <attr name="ticsStepSecondary" format="integer">
+    <enum name="hour" value="0" />
+    <enum name="day" value="1" />
+    <enum name="week" value="2" />
+    <enum name="month" value="3" />
+    <enum name="qday" value="4" />
+    <enum name="hday" value="5" />
+    <enum name="five_days" value="6" />
+    <enum name="ten_days" value="7" />
+  </attr>
+</resources>

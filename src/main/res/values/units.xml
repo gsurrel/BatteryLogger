@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- unit: °C -->
+  <array name="unit_params_degC">
+    <item>[°C]</item> <!-- unit label -->
+    <item>35</item>  <!-- default value -->
+    <item>4</item>     <!-- v-tics: max digits -->
+    <item>5</item>     <!-- v-tics: tics step -->
+    <item>%.1f</item>  <!-- v-tics: format -->
+    <item>10</item>    <!-- main plot: major tics step -->
+    <item>1</item>     <!-- main plot: minor tics step -->
+    <item>10</item>     <!-- main plot: tics stride -->
+    <item>100</item>   <!-- sub plot: major tics step -->
+    <item>10</item>    <!-- sub plot: minor tics step -->
+    <item>30</item>    <!-- sub plot: tics stride -->
+  </array>
+
+  <!-- unit: K -->
+  <array name="unit_params_degK">
+    <item>[K]</item> <!-- unit label -->
+    <item>308.15</item>    <!-- default value -->
+    <item>5</item>     <!-- v-tics: max digits -->
+    <item>5</item>     <!-- v-tics: tics step -->
+    <item>%.1f</item>  <!-- v-tics: format -->
+    <item>10</item>    <!-- main plot: major tics step -->
+    <item>1</item>     <!-- main plot: minor tics step -->
+    <item>10</item>     <!-- main plot: tics stride -->
+    <item>100</item>   <!-- sub plot: major tics step -->
+    <item>10</item>    <!-- sub plot: minor tics step -->
+    <item>30</item>    <!-- sub plot: tics stride -->
+  </array>
+
+  <!-- unit: °F -->
+  <array name="unit_params_degF">
+    <item>[°F]</item> <!-- unit label -->
+    <item>95</item>    <!-- default value -->
+    <item>4</item>     <!-- v-tics: max digits -->
+    <item>5</item>   <!-- v-tics: tics step -->
+    <item>%.1f</item>  <!-- v-tics: format -->
+    <item>10</item>     <!-- main plot: major tics step -->
+    <item>1</item>   <!-- main plot: minor tics step -->
+    <item>10</item>   <!-- main plot: tics stride -->
+    <item>100</item>    <!-- sub plot: major tics step -->
+    <item>10</item>     <!-- sub plot: minor tics step -->
+    <item>30</item>     <!-- sub plot: tics stride -->
+  </array>
+
+  <!-- array of units -->
+  <array name="unit_params">
+    <item>@array/unit_params_degC</item>
+    <item>@array/unit_params_degK</item>
+    <item>@array/unit_params_degF</item>
+  </array>
+</resources>
