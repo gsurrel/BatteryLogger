@@ -1,6 +1,6 @@
 # BatteryLogger
 
-This is a temperature logger for the internal battery, which means that it will
+This is a *temperature* logger for the internal battery, which means that it will
 always be warmer than the room temperature. It logs 30 days of data with a nice
 and simple user interface.
 
