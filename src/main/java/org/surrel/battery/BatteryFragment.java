@@ -2,6 +2,8 @@ package org.surrel.battery;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -60,12 +62,10 @@ public class BatteryFragment extends Fragment {
     private SelectionHolder selection_holder;
 
     private Handler handler;
-    private final Runnable logdata_updater = new Runnable() {
-        @Override
-        public void run() {
-            updateLogData();
-        }
-    };
+    private GestureDetector gesture_detector;
+    private Map<Object, List<Animator>> animator_map;
+    private int measure_unit = 0;
+    private TicsUtils.UnitParameters unit_params;
     private final Runnable vtics_updater = new Runnable() {
         @Override
         public void run() {
@@ -76,13 +76,13 @@ public class BatteryFragment extends Fragment {
                     true);
         }
     };
-
-    private GestureDetector gesture_detector;
-
-    private Map<Object, List<Animator>> animator_map;
-
-    private int measure_unit = 0;
-    private TicsUtils.UnitParameters unit_params;
+    private boolean ignoreDoubtfully;
+    private final Runnable logdata_updater = new Runnable() {
+        @Override
+        public void run() {
+            updateLogData();
+        }
+    };
     private final SharedPreferences.OnSharedPreferenceChangeListener unit_listener =
             new SharedPreferences.OnSharedPreferenceChangeListener() {
                 public void onSharedPreferenceChanged(SharedPreferences pref,
@@ -92,8 +92,6 @@ public class BatteryFragment extends Fragment {
                     }
                 }
             };
-
-    private boolean ignoreDoubtfully;
 
     @Override
     public void onCreate(Bundle savedState) {
@@ -282,6 +280,19 @@ public class BatteryFragment extends Fragment {
         }
         record_cnt = cnt;
 
+        String unit = unit_params.getLabel();
+        unit = unit.substring(1, unit.length() - 1);
+        String actionbarTitle = getString(R.string.app_name) + " ("
+                + Math.round(records[record_cnt - 1].value * 10F) / 10F
+                + unit + ")";
+        Activity act = getActivity();
+        if (act != null) {
+            ActionBar ab = act.getActionBar();
+            if (ab != null) {
+                ab.setTitle(actionbarTitle);
+            }
+        }
+
         plotter_main.setData(records, record_cnt);
         plotter_main.setNormalInterval(LoggerService.LOG_INTERVAL);
         updateValueTics(plotter_main, vtics_main,
@@ -424,6 +435,36 @@ public class BatteryFragment extends Fragment {
         animator_map.remove(target);
     }
 
+    public static class UnitChooserDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedState) {
+            int check_idx = getPreferences().getInt(PREF_UNIT, 0);
+
+            return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.menu_unit)
+                    .setSingleChoiceItems(
+                            R.array.unit_entries, check_idx,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    setUnitPreference(which);
+                                    dialog.dismiss();
+                                }
+                            })
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .create();
+        }
+
+        private SharedPreferences getPreferences() {
+            return PreferenceManager.getDefaultSharedPreferences(getActivity());
+        }
+
+        private void setUnitPreference(int idx) {
+            SharedPreferences.Editor editor = getPreferences().edit();
+            editor.putInt(PREF_UNIT, idx);
+            editor.apply();
+        }
+    }
+
     private class SelectionListener
             implements PlotView.OnSelectionChangeListener {
         @Override
@@ -550,36 +591,6 @@ public class BatteryFragment extends Fragment {
             long end = (end_from * (DIVISION - fac) + end_to * fac) / DIVISION;
             long start = end - PLOT_MAIN_RANGE;
             plotter_sub.setSelectionRange(start, end);
-        }
-    }
-
-    public static class UnitChooserDialogFragment extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(Bundle savedState) {
-            int check_idx = getPreferences().getInt(PREF_UNIT, 0);
-
-            return new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.menu_unit)
-                    .setSingleChoiceItems(
-                            R.array.unit_entries, check_idx,
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    setUnitPreference(which);
-                                    dialog.dismiss();
-                                }
-                            })
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .create();
-        }
-
-        private SharedPreferences getPreferences() {
-            return PreferenceManager.getDefaultSharedPreferences(getActivity());
-        }
-
-        private void setUnitPreference(int idx) {
-            SharedPreferences.Editor editor = getPreferences().edit();
-            editor.putInt(PREF_UNIT, idx);
-            editor.apply();
         }
     }
 }
