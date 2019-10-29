@@ -282,9 +282,11 @@ public class BatteryFragment extends Fragment {
 
         String unit = unit_params.getLabel();
         unit = unit.substring(1, unit.length() - 1);
-        String actionbarTitle = getString(R.string.app_name) + " ("
-                + Math.round(records[record_cnt - 1].value * 10F) / 10F
-                + unit + ")";
+        String actionbarTitle = getString(R.string.app_name);
+        if (record_cnt > 1)
+             actionbarTitle = actionbarTitle + " ("
+                    + Math.round(records[record_cnt - 1].value * 10F) / 10F
+                    + unit + ")";
         Activity act = getActivity();
         if (act != null) {
             ActionBar ab = act.getActionBar();
